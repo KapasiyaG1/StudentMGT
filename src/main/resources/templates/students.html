@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+	<style>
+		.stable
+		{
+		  	margin: auto;
+ 			width: 90%;
+  			padding: 10px;
+		}
+		.hrow
+		{
+			text-align: center;
+		}
+	</style>
+<meta charset="UTF-8">
+<title>Student Management System</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+	<!--  -->
+
+<div class="stable">
+	<div class="hrow">
+		<h1>Student List</h1>
+	</div>
+	<a th:href = "@{/students/new}" class= "btn btn-primary btn-sm mb-4 mt-2 ">Add Student</a>
+	<table class="table table-striped table-bordered" >
+		<thead class="table-dark">
+			<tr>
+      			<th scope="col">Roll Number</th>
+      			<th scope="col">Student's Name</th>
+      			<th scope="col">Father's Name</th>
+      			<th scope="col">Phone Number</th>
+      			<th scope="col">Address</th>
+      			<th scope="col">Joining Date</th>
+      			<th scope="col">Remark</th>
+      			<th scope="col">Actions</th>
+    		</tr>
+  		 </thead>
+  		 <tbody>
+  		 	<tr th:each = "student: ${students}">
+  		 		<td th:text = "${student.roll_number}">
+  		 		<td th:text = "${student.student_name}">
+  		 		<td th:text = "${student.father_name}">
+  		 		<td th:text = "${student.phone_number}">
+  		 		<td th:text = "${student.address}">
+  		 		<td th:text = "${student.joining_date}">
+  		 		<td th:text = "${student.remark}">
+  		 		<td>
+  		 		 	<a th:href = "@{/students/edit/{roll_number}(roll_number=${student.roll_number})}"
+					   class = "btn btn-primary">Update</a>
+					<a th:href = "@{/students/{roll_number}(roll_number=${student.roll_number})}"
+					   class = "btn btn-danger">Delete</a>			 		
+  		 		</td>
+  		 	</tr>
+  		 </tbody>
+	</table>
+</div>
+</body>
+</html>
